@@ -22,6 +22,9 @@
     },
     "indev-error": {
       "tags": []
+    },
+    "primicias-service": {
+      "tags": []
     }
   }
 }

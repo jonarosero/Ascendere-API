@@ -15,8 +15,7 @@
           "options": {
             "outputPath": "dist/apps/encuentros-service",
             "main": "apps/encuentros-service/src/main.ts",
-            "tsConfig": "apps/encuentros-service/tsconfig.app.json",
-            "assets": ["apps/encuentros-service/src/assets"]
+            "tsConfig": "apps/encuentros-service/tsconfig.app.json"
           },
           "configurations": {
             "production": {
@@ -119,8 +118,7 @@
           "options": {
             "outputPath": "dist/apps/proyectos-service",
             "main": "apps/proyectos-service/src/main.ts",
-            "tsConfig": "apps/proyectos-service/tsconfig.app.json",
-            "assets": ["apps/proyectos-service/src/assets"]
+            "tsConfig": "apps/proyectos-service/tsconfig.app.json"
           },
           "configurations": {
             "production": {
@@ -207,6 +205,60 @@
           "options": {
             "jestConfig": "libs/indev-error/jest.config.js",
             "tsConfig": "libs/indev-error/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "primicias-service": {
+      "root": "apps/primicias-service",
+      "sourceRoot": "apps/primicias-service/src",
+      "projectType": "application",
+      "prefix": "primicias-service",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/primicias-service",
+            "main": "apps/primicias-service/src/main.ts",
+            "tsConfig": "apps/primicias-service/tsconfig.app.json",
+            "assets": ["apps/primicias-service/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/primicias-service/src/environments/environment.ts",
+                  "with": "apps/primicias-service/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "primicias-service:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/primicias-service/tsconfig.app.json",
+              "apps/primicias-service/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/primicias-service/jest.config.js",
+            "tsConfig": "apps/primicias-service/tsconfig.spec.json"
           }
         }
       }

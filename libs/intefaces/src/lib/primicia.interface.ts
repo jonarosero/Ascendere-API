@@ -2,9 +2,9 @@ import { Document, Schema, model } from 'mongoose';
 import { Speaker } from './speaker.interface';
 
  export class Primicia{
-  name: string;
-  date: Date;
-  content: string;
+  primiciaName: string;
+  primiciaDate: Date;
+  primiciaContent: string;
   primiciaType: PrimiciaTypes;
 
  }
@@ -34,4 +34,4 @@ import { Speaker } from './speaker.interface';
 
  export interface PrimiciaDocument extends Primicia, Document {}
 
- export const PrimiciaModel = model<PrimiciaDocument>('Encuentro', schema);
+ export const PrimiciaModel = model<PrimiciaDocument>('Primicia', schema);
