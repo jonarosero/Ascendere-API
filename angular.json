@@ -1,0 +1,224 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "",
+  "projects": {
+    "encuentros-service": {
+      "root": "apps/encuentros-service",
+      "sourceRoot": "apps/encuentros-service/src",
+      "projectType": "application",
+      "prefix": "encuentros-service",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/encuentros-service",
+            "main": "apps/encuentros-service/src/main.ts",
+            "tsConfig": "apps/encuentros-service/tsconfig.app.json",
+            "assets": ["apps/encuentros-service/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/encuentros-service/src/environments/environment.ts",
+                  "with": "apps/encuentros-service/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "encuentros-service:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/encuentros-service/tsconfig.app.json",
+              "apps/encuentros-service/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/encuentros-service/jest.config.js",
+            "tsConfig": "apps/encuentros-service/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "types": {
+      "root": "libs/types",
+      "sourceRoot": "libs\\types\\src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs\\types\\tsconfig.lib.json",
+              "libs/types/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/types/jest.config.js",
+            "tsConfig": "libs/types/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "intefaces": {
+      "root": "libs/intefaces",
+      "sourceRoot": "libs\\intefaces\\src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs\\intefaces\\tsconfig.lib.json",
+              "libs/intefaces/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/intefaces/jest.config.js",
+            "tsConfig": "libs/intefaces/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "proyectos-service": {
+      "root": "apps/proyectos-service",
+      "sourceRoot": "apps/proyectos-service/src",
+      "projectType": "application",
+      "prefix": "proyectos-service",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/proyectos-service",
+            "main": "apps/proyectos-service/src/main.ts",
+            "tsConfig": "apps/proyectos-service/tsconfig.app.json",
+            "assets": ["apps/proyectos-service/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/proyectos-service/src/environments/environment.ts",
+                  "with": "apps/proyectos-service/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "proyectos-service:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/proyectos-service/tsconfig.app.json",
+              "apps/proyectos-service/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/proyectos-service/jest.config.js",
+            "tsConfig": "apps/proyectos-service/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "indev-express-server": {
+      "root": "libs/indev-express-server",
+      "sourceRoot": "libs\\indev-express-server\\src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs\\indev-express-server\\tsconfig.lib.json",
+              "libs/indev-express-server/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/indev-express-server/jest.config.js",
+            "tsConfig": "libs/indev-express-server/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "indev-error": {
+      "root": "libs/indev-error",
+      "sourceRoot": "libs\\indev-error\\src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs\\indev-error\\tsconfig.lib.json",
+              "libs/indev-error/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/indev-error/jest.config.js",
+            "tsConfig": "libs/indev-error/tsconfig.spec.json"
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "warnings": {
+      "typescriptMismatch": false,
+      "versionMismatch": false
+    },
+    "defaultCollection": "@nrwl/express"
+  },
+  "schematics": {},
+  "defaultProject": "encuentros-service"
+}
