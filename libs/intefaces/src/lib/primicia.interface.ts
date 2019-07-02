@@ -5,6 +5,9 @@ import { Speaker } from './speaker.interface';
   primiciaName: string;
   primiciaDate: Date;
   primiciaContent: string;
+  primiciaAbstract: string;
+  primiciaImg: string;
+  primiciaAuthor: string;
   primiciaType: PrimiciaTypes;
 
  }
@@ -18,6 +21,9 @@ import { Speaker } from './speaker.interface';
    name : { required: true, type:String},
    date : { required: true, type: Date},
    content : { required: false, type: String},
+   primiciaAbstract : { required: false, type: String},
+   primiciaImg: { required: false, type: String},
+   primiciaAuthor: { required: false, type: String},
    primiciaType: {
      type: String,
      default: 'NOTICIA',
