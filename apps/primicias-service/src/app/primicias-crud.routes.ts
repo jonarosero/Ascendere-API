@@ -3,7 +3,9 @@ import { PrimiciaModel } from '@ascendere/intefaces';
 import { raw } from 'body-parser';
 
 export const primiciasRouter = Router();
-
+/**
+ * **Primicias All**
+ */
 primiciasRouter.get('/primicias', (request: Request, response: Response) => {
   const start = Number(request.query.start) || 0;
   const limit = Number(request.query.limit) || 0;
@@ -45,7 +47,9 @@ primiciasRouter.get('/primicias', (request: Request, response: Response) => {
       })
     })
 });
-
+/**
+ * **Primicia Information**
+ */
 primiciasRouter.get(
   '/primicia/:id',
   (request: Request, response: Response) => {
@@ -68,7 +72,9 @@ primiciasRouter.get(
   }
 );
 
-
+/**
+ * **Edit Primicia Information**
+ */
 primiciasRouter.put(
   '/primicia/:id',
   (request: Request, response: Response) => {
@@ -111,3 +117,53 @@ primiciasRouter.put(
     })
   }
 )
+
+/**
+ * **Create New Primicia**
+ */
+primiciasRouter.post('/primicia',(request: Request, response: Response) =>{
+  const body = request.body;
+
+  let primicia = new PrimiciaModel({
+    name: body.primiciaName,
+    date: body.primiciaDate,
+    content: body.primiciaContent,
+    primiciaType: body.primiciaType
+  });
+
+  primicia.save((err, res)=>{
+    if (err) return response.status(400).json({ok: false, ...err});
+
+    if (!res)
+      return response.status(404).json({
+        ok: false,
+        message: 'Primicia was not created'
+      });
+
+    response.json({
+      ok:true,
+      message: 'Primicia created Succesfully',
+      primicia: res
+    });
+  });
+});
+
+/**
+ * **Delete Primicia**
+ */
+primiciasRouter.delete('/primicia/id:', (request: Request, response: Response) => {
+
+  const id = request.params.id;
+
+  PrimiciaModel.findOneAndDelete(id).exec((err, res) => {
+    if (err) return response.status(400).json({ok: false, ...err});
+
+    if (!res)
+      return response.status(400).json({ok:false, message: `Primicia with id ${id} was not found.`})
+
+    response.json({
+      ok: true,
+      message: 'Primcicia deleted succesfully'
+     });
+  });
+});
