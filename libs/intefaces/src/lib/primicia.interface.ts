@@ -1,5 +1,4 @@
 import { Document, Schema, model } from 'mongoose';
-import { Speaker } from './speaker.interface';
 
  export class Primicia{
   primiciaName: string;
