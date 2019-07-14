@@ -83,9 +83,11 @@ primiciasRouter.put(
     const rawBody = request.body;
 
     const body = {
-      primiciaName: rawBody.name,
-      primiciaDate: rawBody.date,
-      primiciaContent: rawBody.content,
+      primiciaName: rawBody.primiciaName,
+      primiciaDate: new Date(),
+      primiciaContent: rawBody.primciaContent,
+      primiciaAbstract: rawBody.primiciaContent.match(/\n.*?\n/mg),
+      primiciaAuthor: rawBody.primiciaContent.match(/(?:!\[(.*?)\]\((.*?)\))/mg),
       primiciaType: rawBody.primiciaType
     };
 
@@ -125,9 +127,12 @@ primiciasRouter.post('/primicia',(request: Request, response: Response) =>{
   const body = request.body;
 
   let primicia = new PrimiciaModel({
-    name: body.primiciaName,
-    date: body.primiciaDate,
-    content: body.primiciaContent,
+    primiciaName: body.primiciaName,
+    primiciaDate: new Date(),
+    primiciaContent: body.primiciaContent,
+    primiciaAbstract: body.primiciaAContent.match(/\n.*?\n/mg),
+    primiciaImg: body.primiciaContent.match(/(?:!\[(.*?)\]\((.*?)\))/mg),
+    primciaAuthor: body.primciaAuthor,
     primiciaType: body.primiciaType
   });
 
